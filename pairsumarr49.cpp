@@ -7,7 +7,7 @@ int main(){
      int ele1=arr[i];{
         for(int j=0;j<5;j++){
             int ele2=arr[j];
-          if(arr[i]>arr[j]){  if(ele1+ele2==5){
+          if(arr[j]>arr[i]){  if(ele1+ele2==5){
                 cout<<arr[i]<<""<<arr[j]<<"  ";
             }}
         }
