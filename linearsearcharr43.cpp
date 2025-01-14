@@ -1,19 +1,28 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main(){
-    int arr[10]={5,1,-2,10,1,-2,0,5,22,1};
-    //whether 1 is present or not
-    int count=0;
-    for(int i=0;i<10;i++){
-if(arr[i]==1){
-    
-    cout<<arr[i]<<"respective index is "<<i<<endl;
-}
+
+int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key) {
+            return i; // Return the index if the element is found
+        }
     }
-    //cout<<count;
+    return -1; // Return -1 if the element is not found
+}
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int key = 30;
+    
+    int result = linearSearch(arr, n, key);
+    if (result != -1) {
+        cout << "Element found at index: " << result << endl;
+    } else {
+        cout << "Element not found." << endl;
+    }
+    
     return 0;
 }
 // OUTPUT-
-// 1respective index is 1
-// 1respective index is 4
-// 1respective index is 9
+// Element found at index: 2
