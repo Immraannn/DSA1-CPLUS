@@ -23,4 +23,13 @@ int main(){
 
 // Changes inside the function do NOT affect the original variable
 
+
+//| Call by Value       | Call by Reference           |
+//| ------------------- | --------------------------- |
+//| `void dummy(int n)` | `void dummy(int &n)`        |
+//| Copy is passed      | Original variable is passed |
+//| No change in main   | Change reflected in main    |
+
+
 // Function works on a copy
+
