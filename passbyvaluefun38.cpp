@@ -17,3 +17,10 @@ int main(){
 // 6
 // N is 7
 // Number n is 6
+// Key Concept Used Here
+
+// ✅ Call by Value
+
+// Changes inside the function do NOT affect the original variable
+
+// Function works on a copy
