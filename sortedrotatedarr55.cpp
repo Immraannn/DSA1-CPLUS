@@ -36,17 +36,28 @@ int getpivot(int arr[],int n){
     return -1;
 }
 
-int findposition(int arr[],int n,int k){
-    int pivot=getpivot(arr,n);
-    if(k>arr[pivot] && k<arr[n-1]){//binary search on secondline
-return binarysearch(arr,pivot,n-1,k);
+int findposition(int arr[], int n, int k){
+
+    // Step 1: find pivot (index of minimum element)
+    int pivot = getpivot(arr, n);
+
+    // Step 2: decide which sorted part k lies in
+
+    // If k is between pivot and last element,
+    // then search in RIGHT sorted part
+    if(k >= arr[pivot] && k <= arr[n-1]){
+        return binarysearch(arr, pivot, n-1, k);
     }
-    else{//binary search on firstline
-        return binarysearch(arr,0,pivot -1,k);
+
+    // Otherwise search in LEFT sorted part
+    else{
+        return binarysearch(arr, 0, pivot-1, k);
     }
 }
+
 int main(){
     int arr[5]={12,15,18,2,4};
     cout<<"position of sorted rotated array of k=2 is  "<<findposition(arr,5,2);
     return 0;
+
 }
