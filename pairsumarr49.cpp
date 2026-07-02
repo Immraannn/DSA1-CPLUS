@@ -54,3 +54,4 @@ int main(){
         }
     }
 }
+// o(n) time complexity
