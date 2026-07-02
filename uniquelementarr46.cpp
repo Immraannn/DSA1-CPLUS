@@ -14,3 +14,11 @@ int main(){
 }
 // OUTPUT-
 // unique element is 4
+// 🔹 Key Idea: XOR Properties (Very Important)
+
+// XOR (^) has these properties:
+
+// a ^ a = 0
+// a ^ 0 = a
+XOR is commutative & associative
+→ Order doesn’t matter
