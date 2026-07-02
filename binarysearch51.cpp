@@ -30,3 +30,8 @@ int main(){
 // OUTPUT-
 // Index of 12 is 4
 // Index of 16 is -1
+
+// | Implementation          | Time Complexity | Space Complexity |
+// | ----------------------- | --------------- | ---------------- |
+// | Iterative Binary Search | **O(log n)**    | **O(1)**         |
+// | Recursive Binary Search | **O(log n)**    | **O(log n)**     |
