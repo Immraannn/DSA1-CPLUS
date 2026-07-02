@@ -32,4 +32,9 @@ int main(){
 
 
 // Function works on a copy
+// Key Point
+
+// By default, C++ uses pass by value, meaning a copy of the variable is passed to the function. Any changes made inside the function affect only that copy, not the original variable in the calling function.
+
+// If you want the function to modify the original variable, you must use pass by reference:
 
