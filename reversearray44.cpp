@@ -34,3 +34,27 @@ return 0;
 // 1 2 3 4 5
 // Reversed array
 // 5 4 3 2 1
+
+// Two pointer approach
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    int arr[]={1,2,3,4,5};
+    int n=5;
+
+    int left=0;
+    int right=n-1;
+
+    while(left<right){
+
+        swap(arr[left],arr[right]);
+
+        left++;
+        right--;
+    }
+
+    for(int i=0;i<n;i++)
+        cout<<arr[i]<<" ";
+}
