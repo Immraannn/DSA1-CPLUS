@@ -1,3 +1,6 @@
+// Problem
+
+// Given a sorted and rotated array, find the index of the smallest element (pivot)
 #include<iostream>
 using namespace std;
 int getpivot(int arr[], int n){
