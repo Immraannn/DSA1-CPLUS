@@ -1,22 +1,17 @@
-#include <iostream>
+#include<vector>
 using namespace std;
-
-int dupli(int arr[], int n, int key) {
-    int count = 0;
-
-    for (int i = 0; i < n; i++) {
-        if (arr[i] == key) {
-            count++;
-        }
+int findDuplicate(vector<int> &arr) 
+{
+    int ans = 0;
+    
+    //XOR ing all array elements
+    for(int i = 0; i<arr.size(); i++ ) {
+    	ans = ans^arr[i];
     }
-
-    return count;
-}
-
-int main() {
-    int arr[5] = {1, 2, 3, 4, 3};
-
-    cout << dupli(arr, 5, 3);
-
-    return 0;
+	
+    //XOR [1, n-1]
+    for(int i = 1; i<arr.size();i++ ) {
+    	ans = ans^i;
+    }
+    return ans;
 }
