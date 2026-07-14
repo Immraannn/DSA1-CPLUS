@@ -1,26 +1,23 @@
-#include<iostream>
+#include<vector>
 using namespace std;
-
-int main() {
-
-    int x = 5;
-    int arr[] = {1,2,3,4,6};
-
-    for(int i = 0; i < 5; i++) {
-
-        for(int j = i + 1; j < 5; j++) {
-
-            if(arr[i] + arr[j] == x) {
-
-                cout << arr[i] << " " << arr[j] << endl;
-
+vector<vector<int> > pairSum(vector<int> &arr, int s){
+   vector< vector<int> > ans;
+   
+   for(int i=0;i<arr.size(); i++ )
+   {
+   		for(int j = i+1; j<arr.size(); j++) {
+        	if(arr[i] +arr[j] == s)
+            {
+            	vector<int> temp;
+                temp.push_back(min(arr[i], arr[j]));
+                temp.push_back(max(arr[i], arr[j]));
+				ans.push_back(temp);
             }
         }
-    }
-
-    return 0;
+   }
+   sort(ans.begin(), ans.end());
+   return ans;
 }
-
 
 // two pointer approach
 #include<iostream>
