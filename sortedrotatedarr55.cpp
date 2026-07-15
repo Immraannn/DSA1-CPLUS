@@ -1,63 +1,45 @@
-#include<iostream>
-using namespace std;
-int getpivot(int arr[],int n){
-    int s=0;
-    int e=n-1;
-    int mid=s+(e-s)/2;
-    while(s<e){
-        if( arr[mid]>=arr[0]){
-            s=mid+1;
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+
+        int left = 0;
+        int right = nums.size() - 1;
+
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;
+
+            // Target found
+            if (nums[mid] == target)
+                return mid;
+
+            // Left half is sorted
+            if (nums[left] <= nums[mid]) {
+
+                // Target lies in left half
+                if (target >= nums[left] && target < nums[mid]) {
+                    right = mid - 1;
+                }
+                // Search right half
+                else {
+                    left = mid + 1;
+                }
+            }
+
+            // Right half is sorted
+            else {
+
+                // Target lies in right half
+                if (target > nums[mid] && target <= nums[right]) {
+                    left = mid + 1;
+                }
+                // Search left half
+                else {
+                    right = mid - 1;
+                }
+            }
         }
-        else{
-            e=mid;
-        }
-        mid=s+(e-s)/2;
+
+        return -1;
     }
-    return s;//return e; will also give same
-}
-    int binarysearch(int arr[],int s,int e,int key){
-    int start=s;
-    int end=e;
-    int mid=start+(end-start)/2;
-    while(start<=end){
-        if(arr[mid]==key){
-            return mid;
-        }
-        //go to right wala part
-      else  if(key>arr[mid]){
-            start =mid+1;
-        }
-        //go to left wala part
-        else{
-            end=mid-1;
-        }
-        mid=start+(end-start)/2;
-    }
-    return -1;
-}
-
-int findposition(int arr[], int n, int k){
-
-    // Step 1: find pivot (index of minimum element)
-    int pivot = getpivot(arr, n);
-
-    // Step 2: decide which sorted part k lies in
-
-    // If k is between pivot and last element,
-    // then search in RIGHT sorted part
-    if(k >= arr[pivot] && k <= arr[n-1]){
-        return binarysearch(arr, pivot, n-1, k);
-    }
-
-    // Otherwise search in LEFT sorted part
-    else{
-        return binarysearch(arr, 0, pivot-1, k);
-    }
-}
-
-int main(){
-    int arr[5]={12,15,18,2,4};
-    cout<<"position of sorted rotated array of k=2 is  "<<findposition(arr,5,2);
-    return 0;
-
-}
+};
