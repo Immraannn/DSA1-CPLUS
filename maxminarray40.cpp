@@ -1,3 +1,42 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int findMax(vector<int>& arr) {
+    int maxi = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+        if (arr[i] > maxi)
+            maxi = arr[i];
+    }
+
+    return maxi;
+}
+
+int findMin(vector<int>& arr) {
+    int mini = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+        if (arr[i] < mini)
+            mini = arr[i];
+    }
+
+    return mini;
+}
+
+int main() {
+    vector<int> arr = {5, 2, 9, 1, 7};
+
+    cout << "Maximum = " << findMax(arr) << endl;
+    cout << "Minimum = " << findMin(arr) << endl;
+
+    return 0;
+}
+
+
+
+
+
 #include<iostream>
 using namespace std;
 int getmax(int num[], int size){
