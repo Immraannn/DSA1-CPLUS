@@ -1,43 +1,25 @@
-// Problem
+class Solution {
+public:
+    int findPivot(vector<int>& nums) {
 
-// Given a sorted and rotated array, find the index of the smallest element (pivot)
-#include<iostream>
-using namespace std;
-int getpivot(int arr[], int n){
+        int left = 0;
+        int right = nums.size() - 1;
 
-    int s = 0;          // start
-    int e = n - 1;      // end
+        while (left < right) {
 
-    int mid = s + (e - s) / 2;
+            int mid = left + (right - left) / 2;
 
-    while(s < e){
+            // Pivot is on the right
+            if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            }
 
-        // If mid element is >= first element,
-        // then we are in LEFT sorted part
-        // so pivot must be on RIGHT side
-        if(arr[mid] >= arr[0]){
-            s = mid + 1;
+            // Pivot is at mid or on the left
+            else {
+                right = mid;
+            }
         }
 
-        // Otherwise we are in RIGHT part
-        // pivot lies on LEFT side (including mid)
-        else{
-            e = mid;
-        }
-
-        // recalculate mid
-        mid = s + (e - s) / 2;
+        return left;
     }
-
-    // when s == e, that index is pivot
-    return s;   // return e also works because s == e
-}
-
-int main(){
-    int arr[5]={8,10,17,1,3};
-    cout<<"Pivot is "<<getpivot(arr,5);
-    return 0;
-}
-//OUTPUT-
-
-//Pivot is 3
+};
