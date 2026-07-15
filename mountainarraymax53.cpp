@@ -1,43 +1,25 @@
-#include<iostream>
-using namespace std;
-int peakmountain(int arr[], int n){
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
 
-    int s = 0;          // start index
-    int e = n - 1;      // end index
+        int left = 0;
+        int right = arr.size() - 1;
 
-    // calculate mid
-    int mid = s + (e - s) / 2;
+        while (left < right) {
 
-    // binary search loop
-    while(s < e){
+            int mid = left + (right - left) / 2;
 
-        // If mid element is smaller than next element,
-        // we are on increasing slope → peak lies on right side
-        if(arr[mid] < arr[mid + 1]){
-            s = mid + 1;
+            // We are on the increasing side
+            if (arr[mid] < arr[mid + 1]) {
+                left = mid + 1;
+            }
+
+            // We are on the decreasing side or at the peak
+            else {
+                right = mid;
+            }
         }
 
-        // Otherwise we are on decreasing slope or at peak
-        // → peak lies on left side (including mid)
-        else{
-            e = mid;
-        }
-
-        // update mid after changing s or e
-        mid = s + (e - s) / 2;
+        return left;
     }
-
-    // when s == e, that index is the peak
-    return s;
-}
-
-
-
-int main(){
-    int even[4]={3,4,5,1};
-    cout<<"Peak Mountain index is "<<peakmountain(even,4);
-    return 0;
-}
-// OUTPUT-
-
-// Peak Mountain index is 2
+};
