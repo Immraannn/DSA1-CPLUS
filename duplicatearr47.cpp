@@ -14,3 +14,4 @@ public:
         return false;
     }
 };
+// O(nlogn)+O(n)=O(nlogn)
