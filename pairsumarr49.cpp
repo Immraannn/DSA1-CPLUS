@@ -1,22 +1,30 @@
-#include<vector>
-using namespace std;
-vector<vector<int> > pairSum(vector<int> &arr, int s){
-   vector< vector<int> > ans;
-   
-   for(int i=0;i<arr.size(); i++ )
-   {
-   		for(int j = i+1; j<arr.size(); j++) {
-        	if(arr[i] +arr[j] == s)
-            {
-            	vector<int> temp;
-                temp.push_back(min(arr[i], arr[j]));
-                temp.push_back(max(arr[i], arr[j]));
-				ans.push_back(temp);
-            }
+vector<vector<int>> pairSum(vector<int>& nums, int target) {
+
+    sort(nums.begin(), nums.end());
+
+    vector<vector<int>> ans;
+
+    int left = 0;
+    int right = nums.size() - 1;
+
+    while (left < right) {
+
+        int sum = nums[left] + nums[right];
+
+        if (sum == target) {
+            ans.push_back({nums[left], nums[right]});
+            left++;
+            right--;
         }
-   }
-   sort(ans.begin(), ans.end());
-   return ans;
+        else if (sum < target) {
+            left++;
+        }
+        else {
+            right--;
+        }
+    }
+
+    return ans;
 }
 
 // two pointer approach
