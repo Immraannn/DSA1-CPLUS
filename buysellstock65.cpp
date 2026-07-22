@@ -19,3 +19,9 @@ public:
         return profit;
     }
 };
+// Interview Tip
+// When you encounter a stock problem, first identify the constraints:
+// One transaction → Track minimum price (Greedy)
+// Unlimited transactions → Add all positive differences (Greedy)
+// Limited transactions (k, 2, etc.) → Dynamic Programming
+// Cooldown or transaction fee → Dynamic Programming
