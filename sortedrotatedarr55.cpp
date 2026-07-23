@@ -14,7 +14,7 @@ public:
                 return mid;
 
             // Left half is sorted
-            if (nums[left] <= nums[mid]) {
+            if ( nums[mid]) >= nums[left]  {
 
                 // Target lies in left half
                 if (target >= nums[left] && target < nums[mid]) {
