@@ -1,72 +1,36 @@
-#include<vector>
-using namespace std;
-vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, int m)
-{
-	int i = 0, j = 0;
-    vector<int> ans;
-    while(i<n && j<m) {
-    
-    if(arr1[i]==arr2[j])
-    {
-    	ans.push_back(arr1[i]);
-        i++;
-        j++;
-    }
-    else if (arr1[i] < arr2[j]) {
-  		i++;
-    }
-    else
-    {
-    	j++;
-    }
-    
-    }
-    return ans;
-}
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+       int  n=nums1.size()-1;
+       int  m=nums2.size()-1;
+        int i=0,j=0;
+        vector<int> ans;
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+        while(i<=n && j<=m){
+            if(nums1[i]==nums2[j]){
 
-
-
-
-#include <iostream>
-#include <algorithm>
-using namespace std;
-
-void arrayIntersection(int arr1[], int n1, int arr2[], int n2, int result[], int &resultSize) {
-    sort(arr1, arr1 + n1); // Sort the first array
-    sort(arr2, arr2 + n2); // Sort the second array
-
-    int i = 0, j = 0;
-    resultSize = 0;
-
-    while (i < n1 && j < n2) {
-        if (arr1[i] < arr2[j]) {
-            i++;
-        } else if (arr1[i] > arr2[j]) {
-            j++;
-        } else { // arr1[i] == arr2[j]
-            result[resultSize++] = arr1[i];
-            i++;
-            j++;
+                if (ans.empty() || ans.back() != nums1[i]) {
+                    ans.push_back(nums1[i]);
+                }
+            
+                i++;
+                j++;
+            }
+            else if(nums1[i]<nums2[j]){
+                i++;
+            }
+            else{
+                j++;
+            }
+           
         }
+         if (ans.empty()){
+            return {};}
+
+        else{return ans;}
+        
+       
+
     }
-}
-
-int main() {
-    int arr1[] = {1, 2, 2, 3, 4};
-    int arr2[] = {2, 2, 3, 5};
-    int n1 = sizeof(arr1) / sizeof(arr1[0]);
-    int n2 = sizeof(arr2) / sizeof(arr2[0]);
-
-    int result[100]; // Large enough array to store intersection
-    int resultSize;
-
-    arrayIntersection(arr1, n1, arr2, n2, result, resultSize);
-
-    cout << "Intersection of the arrays: ";
-    for (int i = 0; i < resultSize; i++) {
-        cout << result[i] << " ";
-    }
-        cout << endl;
-}
-// OUTPUT-
-// Intersection of the arrays: 2 2 3 
+};
