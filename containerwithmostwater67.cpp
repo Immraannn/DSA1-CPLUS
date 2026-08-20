@@ -4,7 +4,7 @@ public:
         int left = 0;
         int right = height.size() - 1;
 
-        int ans = 0;
+        int ans = 0; 
 
         while (left < right) {
 
